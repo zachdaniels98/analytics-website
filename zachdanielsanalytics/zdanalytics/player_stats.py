@@ -1,13 +1,12 @@
 import pandas as pd
 import numpy as np
 import math
-from pybaseball import playerid_reverse_lookup
 from sqlalchemy import create_engine
 import json
 from zdanalytics.db import get_db
 
 
-def db_connect(player_id):
+def get_pitchers():
     # engine = create_engine('mysql+mysqlconnector://zachdaniels98:Password123@localhost:3306/baseball')
     # cxn = engine.connect()
     # query = '''SELECT pitch_type, player_name, pitcher, events, description, zone, des, stand, p_throws,
@@ -26,7 +25,14 @@ def db_connect(player_id):
     cursor = get_db().cursor(dictionary=True)
     cursor.execute('SELECT * FROM pitcher;')
     pitchers = cursor.fetchall()
+    df = pd.read_json(json.dumps(pitchers), orient='records')
+    print(df.to_string())
     return json.dumps(pitchers)
+
+
+def get_player_stats(player_id):
+
+
 
 # def get_pitches_thrown():
 #

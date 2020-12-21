@@ -18,11 +18,6 @@ def create_app(test_config=None):
         # load the test config file if passed in
         app.config.from_mapping(test_config)
 
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
-
     @app.route('/hello')
     def hello():
         return 'Hello, World!'
