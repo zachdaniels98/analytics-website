@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy as np
-import math
 from sqlalchemy import create_engine
 import json
 from zdanalytics.db import get_db
@@ -76,12 +74,12 @@ def get_opp_ba():
     at_bat = out + hit
     all_ab = df[df['events'].isin(at_bat)][['events', 'stand']]
     results = all_ab.groupby('events').count()
-    all_hits = results.loc[hit]
+    all_hits = results.reindex(hit)
     opp_ba = all_hits.sum() / results.sum()
     left_ab = all_ab[all_ab['stand'] == 'L'].groupby('events').count()
-    left_hits = left_ab.loc[hit]
+    left_hits = left_ab.reindex(hit)
     right_ab = all_ab[all_ab['stand'] == 'R'].groupby('events').count()
-    right_hits = right_ab.loc[hit]
+    right_hits = right_ab.reindex(hit)
     opp_ba_left = left_hits.sum() / left_ab.sum()
     opp_ba_right = right_hits.sum() / right_ab.sum()
     ba = {'opp_ba': opp_ba.round(3).array[0]}
