@@ -17,9 +17,13 @@ def create_app(test_config=None):
         # load the test config file if passed in
         app.config.from_mapping(test_config)
 
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
+
+    # @app.route('/hello')
+    # def hello():
+    #     return 'Hello, World!'
+
+    from . import home
+    app.register_blueprint(home.bp)
 
     from . import baseball
     app.register_blueprint(baseball.bp)

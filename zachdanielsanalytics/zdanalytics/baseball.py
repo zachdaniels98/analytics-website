@@ -10,7 +10,7 @@ bp = Blueprint('baseball', __name__, url_prefix='/baseball')
 
 @bp.route('/')
 def home():
-    return 'home'
+    return 'let\'s check'
 
 
 @bp.route('/player/<int:pid>', methods=('GET',))

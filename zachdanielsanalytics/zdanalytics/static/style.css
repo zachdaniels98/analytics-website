@@ -1,0 +1,43 @@
+html {
+    background-color: powderblue;
+}
+
+section {
+    background-color: white;
+}
+
+nav ul {
+    background-color: rgb(50, 50, 50);
+    list-style-type: none;
+    overflow: hidden;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+#logo {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    float: left;
+    padding: 10px 14px;
+}
+
+nav li {
+    display: block;
+}
+
+li a {
+    text-decoration: none;
+    float: right;
+    padding: 10px 14px;
+    text-align: center;
+    color: white;
+}
+
+li a:hover {
+    background-color: rebeccapurple;
+}
+
+#welcome {
+    font-size: 20px;
+    color: black;
+}
